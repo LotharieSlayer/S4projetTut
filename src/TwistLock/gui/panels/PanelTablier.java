@@ -19,10 +19,8 @@ public class PanelTablier extends JPanel{
         {
             for(int j = 0; j < 7; j++)
             {
-                //rectangleLabel[i][j] = new JLabel(String.valueOf(instance.getValeurCelulle(i, j)));
                 rectangleButton[i][j] = RectangleButton.rectangle(i, j, String.valueOf(instance.getValeurCelulle(i, j)));
                 add(rectangleButton[i][j]);
-                //add(rectangleLabel[i][j]);
             }
         }
     }

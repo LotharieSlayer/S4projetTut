@@ -1,8 +1,10 @@
 package TwistLock.gui.panels;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
 import TwistLock.Main;
@@ -13,11 +15,26 @@ import java.awt.Graphics;
 public class PanelJoueur extends JPanel{
     private JLabel nom;
     private JLabel couleur;
+    private String forme;
 
     public PanelJoueur(Main instance, String coul){
         Border lineborder = BorderFactory.createLineBorder(Color.black, 1); 
         setBorder(lineborder);
-        nom = new JLabel("caca");
+        switch(coul){
+            case "rouge":
+                forme="carre";
+                break;
+            case "bleu":
+                forme="rond";
+                break;
+            case "vert":
+                forme="triangle";
+                break;
+            case "jaune":
+                forme="etoile";
+                break;
+        }
+        nom = new JLabel("Lothaire", new ImageIcon("./res/img/" + forme + ".png"), SwingConstants.CENTER);
         couleur = new JLabel(coul);
 
         add(nom);

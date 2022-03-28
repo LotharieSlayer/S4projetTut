@@ -18,5 +18,4 @@ public class PanelJoueurGauche extends JPanel{
         add(joueur1);
         add(joueur3);
     }
-
 }

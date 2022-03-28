@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import TwistLock.Main;
 import TwistLock.gui.panels.PanelLabel;
 import TwistLock.gui.panels.PanelTablier;
+import TwistLock.gui.panels.PanelJoueurDroite;
 import TwistLock.gui.panels.PanelJoueurGauche;
 
 import javax.swing.JFrame;
@@ -22,6 +23,7 @@ public class FrameJeu extends JFrame {
 
         // IMPORTS
         PanelJoueurGauche pnlJouG = new PanelJoueurGauche(instance) ;
+        PanelJoueurDroite pnlJouD = new PanelJoueurDroite(instance) ;
         PanelTablier pnlTabl = new PanelTablier(instance) ;
         PanelLabel pnlLab = new PanelLabel(instance);
 
@@ -42,6 +44,7 @@ public class FrameJeu extends JFrame {
         pnlJouG.setPreferredSize(new Dimension(widthFrame*1/5, heightFrame*4/5)); // pnl gauche
         pnlTabl.setPreferredSize(new Dimension(widthFrame*3/5, heightFrame*4/5)); // pnl Tablier
         pnlLab.setPreferredSize (new Dimension(widthFrame    , heightFrame*1/5)); // pnl Tablier
+        pnlJouG.setPreferredSize(new Dimension(widthFrame*1/5, heightFrame*4/5)); // pnl droite
 
         System.out.println(widthFrame*3/4);
         System.out.println(widthFrame*1/4);
@@ -50,6 +53,7 @@ public class FrameJeu extends JFrame {
         add(pnlJouG, BorderLayout.WEST);
         add(pnlTabl, BorderLayout.CENTER);
         add(pnlLab, BorderLayout.SOUTH);
+        add(pnlJouD, BorderLayout.EAST);
 
     }
 }
