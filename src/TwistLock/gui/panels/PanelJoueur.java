@@ -16,6 +16,7 @@ public class PanelJoueur extends JPanel{
     private JLabel nom;
     private JLabel couleur;
     private String forme;
+    private int numJoueur;
 
     public PanelJoueur(Main instance, String coul){
         Border lineborder = BorderFactory.createLineBorder(Color.black, 1); 
@@ -23,22 +24,23 @@ public class PanelJoueur extends JPanel{
         switch(coul){
             case "rouge":
                 forme="carre";
+                numJoueur=1;
                 break;
             case "bleu":
                 forme="rond";
+                numJoueur=2;
                 break;
             case "vert":
                 forme="triangle";
+                numJoueur=3;
                 break;
             case "jaune":
                 forme="etoile";
+                numJoueur=4;
                 break;
         }
-        nom = new JLabel("Lothaire", new ImageIcon("./res/img/" + forme + ".png"), SwingConstants.CENTER);
-        couleur = new JLabel(coul);
-
+        nom = new JLabel(instance.getPseudoJoueur(numJoueur), new ImageIcon("./res/img/" + forme + ".png"), SwingConstants.CENTER);
         add(nom);
-        add(couleur);
     }
 
     /*public void paint(Graphics g){

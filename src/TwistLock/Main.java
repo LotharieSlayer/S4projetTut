@@ -19,9 +19,6 @@ public class Main {
 	{
 		instance = this;
 		FramePseudo fp = new FramePseudo(instance);
-		plateau = new Plateau(instance);
-		FrameJeu frame = new FrameJeu(instance);
-        
     }
 
 /**
@@ -42,6 +39,11 @@ public class Main {
 		return plateau.getCelluleAt(ligne, colonne).getValue();
 	}
 
+	public String getPseudoJoueur(int numJoueur)
+	{
+		return this.tabJoueurs[numJoueur-1].getPseudo();
+	}
+
 	public void setJoueurs(Joueur[] tabJ){
 		this.tabJoueurs = tabJ;
 		if(tabJoueurs[0] != null)
@@ -52,5 +54,7 @@ public class Main {
 			System.out.println(tabJoueurs[2].getPseudo());
 		if(tabJoueurs[3] != null)
 			System.out.println(tabJoueurs[3].getPseudo());
+		plateau = new Plateau(instance);
+		FrameJeu frame = new FrameJeu(instance);
 	}
 }
