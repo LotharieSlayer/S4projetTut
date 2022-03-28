@@ -15,6 +15,7 @@ import java.awt.Graphics;
 public class PanelJoueur extends JPanel{
     private JLabel nom;
     private JLabel couleur;
+    private JLabel[] twistLock = new JLabel[20];
     private String forme;
     private int numJoueur;
 
@@ -41,6 +42,12 @@ public class PanelJoueur extends JPanel{
         }
         nom = new JLabel(instance.getPseudoJoueur(numJoueur), new ImageIcon("./res/img/" + forme + ".png"), SwingConstants.CENTER);
         add(nom);
+        //setLayout(new GridLayout(2,1));
+        for(int i = 0; i < instance.getPionsRestants(numJoueur) ; i++)
+        {
+            twistLock[i] = new JLabel(new ImageIcon("./res/img/rond-" + coul + ".png"), SwingConstants.CENTER);
+            add(twistLock[i]);
+        }
     }
 
     /*public void paint(Graphics g){

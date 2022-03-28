@@ -44,6 +44,11 @@ public class Main {
 		return this.tabJoueurs[numJoueur-1].getPseudo();
 	}
 
+	public int getPionsRestants(int numJoueur)
+	{
+		return this.tabJoueurs[numJoueur-1].getPionsRestants();
+	}
+
 	public void setJoueurs(Joueur[] tabJ){
 		this.tabJoueurs = tabJ;
 		if(tabJoueurs[0] != null)
