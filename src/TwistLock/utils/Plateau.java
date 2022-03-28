@@ -1,5 +1,7 @@
 package TwistLock.utils;
 
+import TwistLock.Main;
+
 public class Plateau {
 
 	private static int LIGNE   = 10;
@@ -7,7 +9,7 @@ public class Plateau {
 
 	private Cellule[][] plateau;
 
-	public Plateau() {
+	public Plateau(Main instance) {
 		plateau = new Cellule[LIGNE][COLONNE];
 
 		for (int i = 0; i < plateau.length; i++) {

@@ -14,8 +14,9 @@ public class PanelJoueurGauche extends JPanel{
     public PanelJoueurGauche(Main instance){
         setLayout(new GridLayout(2,1));
         joueur1 = new PanelJoueur(instance, "rouge");
-        //joueur3 = new PanelJoueur(instance, "bleu");
+        joueur3 = new PanelJoueur(instance, "bleu");
         add(joueur1);
-        //add(joueur3);
+        add(joueur3);
     }
+
 }

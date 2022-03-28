@@ -3,16 +3,21 @@ package TwistLock;
 import java.io.IOException;
 
 import TwistLock.gui.FrameJeu;
+import TwistLock.utils.Joueur;
 import TwistLock.utils.Plateau;
 
 public class Main {
+
     private static Main instance;
 	private int nbJoueurs;
+    
+
     public Main() throws IOException
 	{
 		instance = this;
-		Plateau plateau = new Plateau();
+		Plateau plateau = new Plateau(instance);
 		FrameJeu frame = new FrameJeu(instance);
+        
     }
 
 /**

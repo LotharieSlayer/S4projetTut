@@ -3,6 +3,10 @@
 
 ./src/TwistLock/Main.java
 
+./src/TwistLock/utils/Plateau.java
+./src/TwistLock/utils/Cellule.java
+./src/TwistLock/utils/Joueur.java
+
 ./src/TwistLock/gui/FrameConfig.java
 ./src/TwistLock/gui/FrameJeu.java
 ./src/TwistLock/gui/FramePseudo.java
