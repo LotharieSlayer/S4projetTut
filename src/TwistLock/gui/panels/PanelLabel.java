@@ -22,7 +22,7 @@ public class PanelLabel extends JPanel{
 
     public PanelLabel(Main instance){
 
-        image = new JLabel("C'est au tour de Lothaire", new ImageIcon("./res/labels/j1.png"), SwingConstants.CENTER);
+        image = new JLabel("C'est au tour de " + instance.getPseudoJoueur(instance.getNumJoueurEnCours()), new ImageIcon("./res/labels/j" + instance.getNumJoueurEnCours() + ".png"), SwingConstants.CENTER);
 
         /*String fName = "./res/font/Inter-Bold.ttf";
 		InputStream fFont = PanelLabel.class.getResourceAsStream(fName);

@@ -13,6 +13,7 @@ public class Main {
 	private Plateau plateau;
 	private int nbJoueurs = 4;
 	private Joueur[] tabJoueurs;
+	private int numJoueurEnCours;
     
 
     public Main() throws IOException
@@ -49,6 +50,15 @@ public class Main {
 		return this.tabJoueurs[numJoueur-1].getPionsRestants();
 	}
 
+	public int getNumJoueurEnCours()
+	{
+		return numJoueurEnCours;
+	}
+
+	public void captureCoineCellule(int ligne, int colonne, Joueur joueur, int coin){
+		plateau.captureCoinCellule(ligne, colonne, joueur, coin);
+	}
+
 	public void setJoueurs(Joueur[] tabJ){
 		this.tabJoueurs = tabJ;
 		if(tabJoueurs[0] != null)
@@ -59,6 +69,7 @@ public class Main {
 			System.out.println(tabJoueurs[2].getPseudo());
 		if(tabJoueurs[3] != null)
 			System.out.println(tabJoueurs[3].getPseudo());
+		numJoueurEnCours = 1;
 		plateau = new Plateau(instance);
 		FrameJeu frame = new FrameJeu(instance);
 	}
