@@ -34,14 +34,14 @@ public class FrameJeu extends JFrame {
         setLocation(widthFrame / 10, heightFrame / 10);
 		setSize(widthFrame,heightFrame);
 		setResizable(false);
-		setTitle ("TwiwtLock");
+		setTitle ("TwistLock");
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		setVisible(true);
 
         // EDIT PNL
         pnlJouG.setPreferredSize(new Dimension(widthFrame*1/5, heightFrame*4/5)); // pnl gauche
         pnlTabl.setPreferredSize(new Dimension(widthFrame*3/5, heightFrame*4/5)); // pnl Tablier
-        pnlLab.setPreferredSize(new Dimension(widthFrame, heightFrame*1/5)); // pnl Tablier
+        pnlLab.setPreferredSize (new Dimension(widthFrame    , heightFrame*1/5)); // pnl Tablier
 
         System.out.println(widthFrame*3/4);
         System.out.println(widthFrame*1/4);
