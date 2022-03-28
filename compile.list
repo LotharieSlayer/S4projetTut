@@ -1,0 +1,13 @@
+-d bin
+-encoding utf8
+
+./src/TwistLock/Main.java
+
+./src/TwistLock/gui/FrameConfig.java
+./src/TwistLock/gui/FrameJeu.java
+./src/TwistLock/gui/FramePseudo.java
+
+./src/TwistLock/gui/panels/PanelJoueur.java
+./src/TwistLock/gui/panels/PanelJoueurGauche.java
+./src/TwistLock/gui/panels/PanelLabel.java
+./src/TwistLock/gui/panels/PanelTablier.java

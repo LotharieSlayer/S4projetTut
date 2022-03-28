@@ -22,9 +22,11 @@ public class FrameConfig extends JFrame{
         add(new JLabel("Nombre de joueurs"));
         deux.setSelected(true);
         choixNbJ.add(deux);
+        deux.addItemListener( this::radioButtons_itemStateChanged );
         choixNbJ.add(trois);
+        trois.addItemListener( this::radioButtons_itemStateChanged );
         choixNbJ.add(quatre);
-        add(choixNbJ);
+        quatre.addItemListener( this::radioButtons_itemStateChanged );
     }
     void radioButtons_itemStateChanged(ItemEvent e) {
         Object source = e.getSource();
