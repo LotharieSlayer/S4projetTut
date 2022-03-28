@@ -6,6 +6,7 @@ import TwistLock.gui.FrameJeu;
 
 public class Main {
     private static Main instance;
+	private int nbJoueurs;
     public Main() throws IOException
 	{
 		instance = this;
@@ -19,5 +20,9 @@ public class Main {
  */
 	public static void main (String[] args) throws Exception{
 		new Main();
+	}
+
+	public int getNbJoueurs(){
+		return this.nbJoueurs;
 	}
 }

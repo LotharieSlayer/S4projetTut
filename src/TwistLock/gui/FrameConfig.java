@@ -34,4 +34,5 @@ public class FrameConfig extends JFrame{
         if (source == trois) nbJoueurs = 3;
         if (source == quatre) nbJoueurs = 4;
     }
+    
 }

@@ -11,9 +11,9 @@ public class PanelJoueur extends JPanel{
     private JLabel nom;
     private JLabel couleur;
 
-    public PanelJoueur(Main instance){
+    public PanelJoueur(Main instance, String coul){
         nom = new JLabel("caca");
-        couleur = new JLabel("rouge");
+        couleur = new JLabel(coul);
         add(nom);
         add(couleur);
     }
