@@ -38,6 +38,10 @@ public class Joueur {
 		return true;
 	}
 
+	public String getPseudo() {
+		return pseudo;
+	}
+
 	@Override
 	public String toString() {
 		return "[joueur " + pseudo +" {points = " + points + ", pions restant = " + nbPionsRestants + "}]";

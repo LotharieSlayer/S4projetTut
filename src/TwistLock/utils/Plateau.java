@@ -1,5 +1,8 @@
 package TwistLock.utils;
 
+import java.util.HashMap;
+import java.util.Map.Entry;
+
 import TwistLock.Main;
 
 public class Plateau {
@@ -17,6 +20,7 @@ public class Plateau {
 				plateau[i][j] = new Cellule();
 			}
 		}
+
 	}
 
 	public Cellule[][] getPlateau() {
@@ -30,13 +34,39 @@ public class Plateau {
 		return null;
 	}
 
-	public void captureCoinCellule(int ligne, int colonne, final String pseudo, final int coin) {
+	public void captureCoinCellule(final int ligne,final int colonne,final Joueur joueur, final int coin) {
 		if(isFull()){return;}
-
+		joueur.retraitPions();
 		Cellule[] tabcCellules = getCelluleAutour(ligne, colonne, coin);
 		for (int i = 0; i < 4; i++) {
-			tabcCellules[i].captureCoin(pseudo, i+1);
+			tabcCellules[i].captureCoin(joueur, i+1);
+			captureCellule(tabcCellules[i], joueur);
 		}
+	}
+
+	public void captureCellule(final Cellule cell,final Joueur joueur) {
+
+		HashMap<String, Integer> coinsCapture = new HashMap<>();
+		for (int i = 0; i < 4; i++) {
+			if(cell.coinCapture(i+1) ) {
+				String pseudo = cell.coinCaptureBy(i).getPseudo();
+				coinsCapture.put(pseudo, (coinsCapture.containsKey(pseudo) ? (coinsCapture.get(pseudo))+1:1));
+			}
+		}
+
+		Entry<String, Integer> entry = coinsCapture.entrySet().stream().max((e1, e2) -> Integer.compare(e1.getValue(), e2.getValue())).get();
+
+		System.out.println(coinsCapture.toString());
+		//System.out.println(entry.getKey() + " || " + entry.getValue());
+
+		for (Entry<String, Integer> hash : coinsCapture.entrySet()) {
+			if(cell.isCaptured() && entry.getValue() == hash.getValue() && !entry.getKey().equals(hash.getKey())) {
+				cell.setToNeutral();
+				return;
+			}
+		}
+
+		cell.captureBy(joueur);
 	}
 
 	private Cellule[] getCelluleAutour(final int ligne, final int colonne,final int coin) {

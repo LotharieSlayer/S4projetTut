@@ -1,17 +1,22 @@
 package TwistLock.utils;
 
+import java.util.HashMap;
+
 public class Cellule {
 	
 	private final int NB_COIN = 4;
 
-	private int value;
+	private boolean isCaptured;
+	private Joueur  captureby;
 
-	private int[]     tabCoin;
-	private Boolean[] tabCoinCapturer;
-	private String[]  tabJoueurCapture;
+	private int   value;
 
+	private int[] tabCoin;
+
+	private Joueur[] tabJoueurCapture;
 
 	public Cellule() {
+		this.isCaptured = false;
 		this.value = (int) (Math.random() * 50 + 5);
 
 		this.tabCoin = new int[NB_COIN];
@@ -20,12 +25,7 @@ public class Cellule {
 			tabCoin[i] = i;
 		}
 
-		this.tabCoinCapturer = new Boolean[NB_COIN];
-		for (int i = 0; i < tabCoin.length; i++) {
-			tabCoinCapturer[i] = false;
-		}
-
-		this.tabJoueurCapture = new String[NB_COIN];
+		this.tabJoueurCapture = new Joueur[NB_COIN];
 	}
 
 	//détermine si le coin en question est capturé ou non
@@ -35,8 +35,8 @@ public class Cellule {
 	}
 
 	//stock le pseudo de la prise de capture
-	public void captureCoin(String pseudo, int coin) {
-		tabJoueurCapture[coin-1] = pseudo;
+	public void captureCoin(Joueur joueur, int coin) {
+		tabJoueurCapture[coin-1] = joueur;
 	}
 
 	public Boolean cellulePleine() {
@@ -47,7 +47,25 @@ public class Cellule {
 		return true;
 	}	
 
+	public boolean isCaptured() {
+		return isCaptured;
+	}
+
+	public void captureBy(Joueur joueur) {
+		if(!isCaptured) {
+			isCaptured = true;
+			captureby  = joueur;
+			captureby.addPoints(value);
+		}
+	}
+
 	public int getValue  (              ) { return this.value;      }
 	public int getCoin   (final int coin) { return tabCoin[coin];   }
-	public Boolean[] getTabCoinCapturer() { return tabCoinCapturer; }
+	public Joueur coinCaptureBy (final int coin) {return tabJoueurCapture[coin];}
+
+	public void setToNeutral() {
+		captureby.removePoints(value);
+		captureby = null;
+		isCaptured = false;
+	}
 }
