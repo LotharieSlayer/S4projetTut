@@ -9,13 +9,14 @@ import TwistLock.utils.Plateau;
 public class Main {
 
     private static Main instance;
+	private Plateau plateau;
 	private int nbJoueurs;
     
 
     public Main() throws IOException
 	{
 		instance = this;
-		Plateau plateau = new Plateau(instance);
+		plateau = new Plateau(instance);
 		FrameJeu frame = new FrameJeu(instance);
         
     }
@@ -31,5 +32,10 @@ public class Main {
 
 	public int getNbJoueurs(){
 		return this.nbJoueurs;
+	}
+
+	public int getValeurCelulle(int ligne, int colonne)
+	{
+		return plateau.getCelluleAt(ligne, colonne).getValue();
 	}
 }
