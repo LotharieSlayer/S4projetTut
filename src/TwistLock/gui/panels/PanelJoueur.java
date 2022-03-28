@@ -1,23 +1,21 @@
-package LineRobot.gui.panels;
+package TwistLock.gui.panels;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import TwistLock.Main;
 
 import java.awt.Color;
 import java.awt.Graphics;
 
-import LineRobot.MainActivity;
+public class PanelJoueur extends JPanel{
+    private JLabel nom;
+    private JLabel couleur;
 
-public class GraphPanel extends JPanel{
-
-    private JLabel label;
-
-
-    public GraphPanel(MainActivity instance){
-        label = new JLabel("caca");
-        add(label);
-
-
+    public PanelJoueur(Main instance){
+        nom = new JLabel("caca");
+        couleur = new JLabel("rouge");
+        add(nom);
+        add(couleur);
     }
 
     public void paint(Graphics g){
@@ -31,5 +29,4 @@ public class GraphPanel extends JPanel{
         g.fillOval(1170, 850, 10, 10);
         
     }
-
 }

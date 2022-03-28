@@ -2,11 +2,14 @@ package TwistLock;
 
 import java.io.IOException;
 
+import TwistLock.gui.FrameJeu;
+
 public class Main {
     private static Main instance;
     public Main() throws IOException
 	{
 		instance = this;
+		FrameJeu frame = new FrameJeu(instance);
     }
 
 /**
