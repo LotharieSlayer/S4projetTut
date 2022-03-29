@@ -81,6 +81,5 @@ public class FramePseudo extends JFrame implements ActionListener{
                 this.dispose();
             }
         }
-        
     }
 }
