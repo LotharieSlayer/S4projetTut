@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import TwistLock.Main;
-import TwistLock.gui.RectangleButton;
+import TwistLock.gui.buttons.RectangleButton;
 
 public class PanelTablier extends JPanel implements ActionListener{
 

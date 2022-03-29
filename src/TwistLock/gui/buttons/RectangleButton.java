@@ -1,4 +1,4 @@
-package TwistLock.gui;
+package TwistLock.gui.buttons;
 
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
