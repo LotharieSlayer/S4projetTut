@@ -31,20 +31,9 @@ public class RectangleButton extends JButton
     {
         this.x = x;
         this.y = y;
-        int numJoueur = 0;
         Icon icon;
        
-        Joueur joueurCaptureCelulle = instance.getCelluleAt(x, y).getCaptureby();
-        if(joueurCaptureCelulle != null)
-        {
-            numJoueur = instance.getCelluleAt(x, y).getCaptureby().getNumJoueur();
-        }
-        if(numJoueur == 0)
-        {
-            icon = new ImageIcon("../res/img/rectangle.png");
-        }
-        else
-            icon = new ImageIcon("../res/img/rectangle-j" + numJoueur + ".png");
+        icon = new ImageIcon("../res/img/rectangle.png");
     
         this.setText(value);
         this.setIcon(icon);
