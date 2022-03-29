@@ -40,7 +40,7 @@ public class FrameSelectionCoin extends JFrame implements ActionListener{
 		setTitle ("Séléction du coin");
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
-        setLayout(new GridLayout(5,1));
+        setLayout(new GridLayout(6,1));
 
         valider = new JButton("valider");
 
