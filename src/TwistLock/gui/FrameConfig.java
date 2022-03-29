@@ -67,6 +67,7 @@ public class FrameConfig extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         if(e.getSource() == valider){
+            if(nbJoueurs == 0) nbJoueurs = 2;
             instance.setNbJoueurs(nbJoueurs);
             instance.lancerFramePseudo();
             this.dispose();
