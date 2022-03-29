@@ -1,5 +1,6 @@
 package TwistLock.gui.panels;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,6 +12,9 @@ import java.awt.BorderLayout;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.awt.Graphics;
 
 import TwistLock.Main;
 import TwistLock.gui.FrameSelectionCoin;
@@ -20,19 +24,21 @@ public class PanelTablier extends JPanel implements ActionListener{
 
     private Main instance;
 
-    private RectangleButton[][] rectangleButton = new RectangleButton[15][15];
+    private RectangleButton[][] rectangleButton = new RectangleButton[10][7];
     public PanelTablier(Main instance){
         this.instance = instance;
         JPanel pnlVide = new JPanel();
-        JPanel pnlGrille = new JPanel();
+        PanelGrille pnlGrille = new PanelGrille();
         pnlVide.setPreferredSize(new Dimension(0,0));
         pnlGrille.setLayout(new GridLayout(10,7));
+        pnlGrille.setSize(new Dimension(680, 720*4/5));
+
 
         for(int i = 0; i < 10 ; i++)
         {
             for(int j = 0; j < 7; j++)
             {
-                rectangleButton[i][j] = new RectangleButton(i, j, String.valueOf(instance.getValeurCelulle(i, j)));
+                rectangleButton[i][j] = new RectangleButton(instance, i, j, String.valueOf(instance.getValeurCelulle(i, j)));
                 rectangleButton[i][j].addActionListener(this);
                 pnlGrille.add(rectangleButton[i][j]);
             }
@@ -41,6 +47,7 @@ public class PanelTablier extends JPanel implements ActionListener{
         add(pnlGrille, BorderLayout.CENTER);
         add(pnlVide, BorderLayout.EAST);
         add(pnlVide, BorderLayout.WEST);
+        System.out.println(pnlGrille.getSize());
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -57,7 +64,26 @@ public class PanelTablier extends JPanel implements ActionListener{
                 FrameSelectionCoin frameSelectionCoin = new FrameSelectionCoin(instance, ligne, colonne);
             }
             }
-        }            
+        }   
+        
+    }
+
+      
+    public void maj() {
+        //Mettre des trucs pour maj la grille (notamment les rectangles ou faut changer )
+    }
+
+    class PanelGrille extends JPanel{
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            try {
+                g.drawImage(ImageIO.read(new File("../res/img/rond-rouge.png")), 70, this.getHeight()/16, null);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
     }
 }
 

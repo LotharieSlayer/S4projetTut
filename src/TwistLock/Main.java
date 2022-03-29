@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import TwistLock.gui.FrameConfig;
 import TwistLock.gui.FrameJeu;
+import TwistLock.utils.Cellule;
 import TwistLock.utils.Joueur;
 import TwistLock.utils.Plateau;
 import TwistLock.gui.FramePseudo;
@@ -16,7 +17,7 @@ public class Main {
 	private int nbJoueurs;
 	private Joueur[] tabJoueurs;
 	private int numJoueurEnCours;
-    
+	private FrameJeu fj;
 
     public Main() throws IOException
 	{
@@ -56,6 +57,11 @@ public class Main {
 		return this.tabJoueurs[numJoueur-1].getPionsRestants();
 	}
 
+	public Cellule getCelluleAt(int ligne,int colonne)
+	{
+		return plateau.getCelluleAt(ligne, colonne);
+	}
+
 	public int getNumJoueurEnCours()
 	{
 		return numJoueurEnCours;
@@ -76,7 +82,7 @@ public class Main {
 	}
 
 	public void lancerFrameJeu(){
-		FrameJeu fj = new FrameJeu(instance);
+		fj = new FrameJeu(instance);
 	}
 
 	public void setJoueurs(Joueur[] tabJ){
@@ -177,5 +183,7 @@ public class Main {
             joueurSuivant();
 			joueurActuel = tabJoueurs[numJoueurEnCours-1];
         } while (joueurActuel.getPionsRestants() == 0);
+
+		fj.maj();
     }
 }

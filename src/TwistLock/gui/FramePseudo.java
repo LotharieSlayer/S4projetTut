@@ -81,7 +81,7 @@ public class FramePseudo extends JFrame implements ActionListener{
                     }
                 }
                 if(valide){
-                    joueurs[cpt]=Joueur.creerJoueur(tf[cpt].getText());
+                    joueurs[cpt]=Joueur.creerJoueur(tf[cpt].getText(), cpt+1);
                 }
             }
             if(valide){

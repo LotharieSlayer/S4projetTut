@@ -1,12 +1,22 @@
 package TwistLock.gui.panels;
 
 import java.awt.Font;
+import java.awt.image.BufferedImage;
+import java.awt.FontFormatException;
+import java.awt.Graphics;
+import java.awt.Component;
+import java.awt.Frame;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Toolkit;
+
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.awt.FontFormatException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,25 +26,46 @@ import javax.swing.plaf.FontUIResource;
 import TwistLock.Main;
 
 
+
+
 public class PanelLabel extends JPanel{
     private JLabel label;
-    private JLabel image;
+	private Image image;
+	private Main instance;
 
     public PanelLabel(Main instance){
 
-        image = new JLabel("C'est au tour de " + instance.getPseudoJoueur(instance.getNumJoueurEnCours()), new ImageIcon("../res/labels/j" + instance.getNumJoueurEnCours() + ".png"), SwingConstants.CENTER);
+		this.instance = instance;
+        this.label = new JLabel("C'est au tour de " + instance.getPseudoJoueur(instance.getNumJoueurEnCours()));
 
-        /*String fName = "../res/font/Inter-Bold.ttf";
-		InputStream fFont = PanelLabel.class.getResourceAsStream(fName);
-		try 
-		{
-			Font font = Font.createFont(Font.TRUETYPE_FONT, fFont);
-			Font smallFont = font.deriveFont(Font.PLAIN, 16);
-			this.image.setFont(smallFont);
-		}
-		catch (IOException e)        { e.printStackTrace(); }
-		catch (FontFormatException e){ e.printStackTrace(); }*/
+		/*try {
+			String fName = "../../../res/fonts/Montserrat-Bold.ttf";
+			InputStream is = PanelLabel.class.getResourceAsStream(fName);
+			System.out.println(PanelLabel.class.getResourceAsStream(fName));
+			System.out.println(is);
+			Font font = Font.createFont(Font.TRUETYPE_FONT, is);
+			label.setFont(new Font("Montserrat-Bold", Font.PLAIN, 18));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}*/
 
-        add(image);
+		add(label);
+
+
     }
+
+	@Override
+    protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		try {
+            g.drawImage(ImageIO.read(new File("../res/labels/j" + instance.getNumJoueurEnCours() + ".png")), 0, 0, null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+	public void maj()
+	{
+		this.label.setText("C'est au tour de " + instance.getPseudoJoueur(instance.getNumJoueurEnCours()));
+	}
 }

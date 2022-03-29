@@ -50,6 +50,11 @@ public class PanelJoueur extends JPanel{
         }
     }
 
+    public void maj() {
+        //Mettre des trucs pour maj
+        System.out.println("je fais la maj");
+    }
+
     /*public void paint(Graphics g){
     
         g.drawLine(10, 10, 1160, 840);

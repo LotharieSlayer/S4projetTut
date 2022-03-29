@@ -2,6 +2,10 @@ package TwistLock.gui.buttons;
 
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+
+import TwistLock.Main;
+import TwistLock.utils.Joueur;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -23,12 +27,24 @@ public class RectangleButton extends JButton
 	 * @param y Position Y en int
 	 * @param image L'image de la planète qui sera sur le bouton.
 	 */
-    public RectangleButton(int x, int y, String value)
+    public RectangleButton(Main instance, int x, int y, String value)
     {
         this.x = x;
         this.y = y;
+        int numJoueur = 0;
+        Icon icon;
        
-        Icon icon              = new ImageIcon("../res/img/rectangle.png");
+        Joueur joueurCaptureCelulle = instance.getCelluleAt(x, y).getCaptureby();
+        if(joueurCaptureCelulle != null)
+        {
+            numJoueur = instance.getCelluleAt(x, y).getCaptureby().getNumJoueur();
+        }
+        if(numJoueur == 0)
+        {
+            icon = new ImageIcon("../res/img/rectangle.png");
+        }
+        else
+            icon = new ImageIcon("../res/img/rectangle-j" + numJoueur + ".png");
     
         this.setText(value);
         this.setIcon(icon);
