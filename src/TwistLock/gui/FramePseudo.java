@@ -60,7 +60,8 @@ public class FramePseudo extends JFrame implements ActionListener{
                 joueurs[cpt]=Joueur.creerJoueur(tf[cpt].getText());
             }
             instance.setJoueurs(joueurs);
-            return;
+            instance.lancerFrameJeu();
+            this.dispose();
         }
         
     }

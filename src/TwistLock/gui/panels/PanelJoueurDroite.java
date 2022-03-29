@@ -13,7 +13,7 @@ public class PanelJoueurDroite extends JPanel{
     private PanelJoueur joueur4;
 
     public PanelJoueurDroite(Main instance){
-        if( instance.getNbJoueurs()>2){
+        if( instance.getNbJoueurs()>3){
             setLayout(new GridLayout(2,1));
             joueur2 = new PanelJoueur(instance, "vert");
             joueur4 = new PanelJoueur(instance, "jaune");

@@ -2,6 +2,7 @@ package TwistLock;
 
 import java.io.IOException;
 
+import TwistLock.gui.FrameConfig;
 import TwistLock.gui.FrameJeu;
 import TwistLock.utils.Joueur;
 import TwistLock.utils.Plateau;
@@ -11,7 +12,7 @@ public class Main {
 
     private static Main instance;
 	private Plateau plateau;
-	private int nbJoueurs = 4;
+	private int nbJoueurs;
 	private Joueur[] tabJoueurs;
 	private int numJoueurEnCours;
     
@@ -19,7 +20,11 @@ public class Main {
     public Main() throws IOException
 	{
 		instance = this;
-		FramePseudo fp = new FramePseudo(instance);
+		this.plateau = new Plateau(instance);
+		FrameConfig fc = new FrameConfig(instance);
+		/*FramePseudo fp = new FramePseudo(instance);
+		plateau = new Plateau(instance);
+		FrameJeu frame = new FrameJeu(instance);*/
     }
 
 /**
@@ -59,18 +64,22 @@ public class Main {
 		plateau.captureCoinCellule(ligne, colonne, joueur, coin);
 	}
 
+	public void setNbJoueurs(int nbJoueurs){ this.nbJoueurs = nbJoueurs; }
+
+	public void lancerFramePseudo(){
+		FramePseudo fp = new FramePseudo(instance);
+	}
+
+	public void lancerFrameJeu(){
+		FrameJeu fj = new FrameJeu(instance);
+	}
+
 	public void setJoueurs(Joueur[] tabJ){
 		this.tabJoueurs = tabJ;
-		if(tabJoueurs[0] != null)
-			System.out.println(tabJoueurs[0].getPseudo());
-		if(tabJoueurs[1] != null)
-			System.out.println(tabJoueurs[1].getPseudo());
-		if(tabJoueurs[2] != null)
-			System.out.println(tabJoueurs[2].getPseudo());
-		if(tabJoueurs[3] != null)
-			System.out.println(tabJoueurs[3].getPseudo());
+		for(int cpt = 0; cpt < tabJ.length; cpt++)
+			if(tabJoueurs[cpt] != null)
+				System.out.println(tabJoueurs[cpt].getPseudo());
+		
 		numJoueurEnCours = 1;
-		plateau = new Plateau(instance);
-		FrameJeu frame = new FrameJeu(instance);
 	}
 }
