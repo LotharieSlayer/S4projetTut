@@ -13,5 +13,8 @@
 
 ./src/TwistLock/gui/panels/PanelJoueur.java
 ./src/TwistLock/gui/panels/PanelJoueurGauche.java
+./src/TwistLock/gui/panels/PanelJoueurDroite.java
 ./src/TwistLock/gui/panels/PanelLabel.java
 ./src/TwistLock/gui/panels/PanelTablier.java
+
+./src/TwistLock/gui/buttons/RectangleButton.java
