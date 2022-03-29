@@ -38,7 +38,7 @@ public class Cellule {
 
 	//stock le pseudo de la prise de capture
 	public void captureCoin(Joueur joueur, int coin) {
-		System.out.println("Le coins " + coin + "de la cellule " + x + (char) (65 + y) + " à été capturé par " + joueur.getPseudo());
+		System.out.println("Le coin " + coin + " de la cellule " + x + (char) (65 + y) + " a été capturé par " + joueur.getPseudo());
 		tabJoueurCapture[coin-1] = joueur;
 	}
 

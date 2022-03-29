@@ -41,9 +41,9 @@ public class Plateau {
 			if(tabcCellules[i] != null) {
 				tabcCellules[i].captureCoin(joueur, i+1);
 				if(captureCellule(tabcCellules[i], joueur)) {
-					System.out.println("la cellule " + tabcCellules[i].getX() + (char) (65 + tabcCellules[i].getY()) + " a été caturé"  );
+					System.out.println("La cellule " + tabcCellules[i].getX() + (char) (65 + tabcCellules[i].getY()) + " a été capturé"  );
 				} else {
-					System.out.println("la cellule " + tabcCellules[i].getX() + (char) (65 + tabcCellules[i].getY()) + " a été perdu"  );
+					System.out.println("La cellule " + tabcCellules[i].getX() + (char) (65 + tabcCellules[i].getY()) + " a été perdue"  );
 				}
 				
 			}

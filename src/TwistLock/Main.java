@@ -110,6 +110,7 @@ public class Main {
 	}
 
 	public void setCapture(int ligne, int colonne, int numCoin) {
+		System.out.println();
 		Joueur joueurActuel = tabJoueurs[numJoueurEnCours-1];
 
 		if(verifFinPartie()) {
@@ -132,7 +133,7 @@ public class Main {
 				System.out.println("Le joueur " + alJoueursVinqueurs.get(0).getPseudo() + " remporte la partie");
 				return;
 			} else {
-				String res = "il y a égalité entre " + alJoueursVinqueurs.size() +" joueurs (";
+				String res = "Il y a égalité entre " + alJoueursVinqueurs.size() +" joueurs (";
 				for (Joueur joueur : alJoueursVinqueurs) {
 					res += joueur.getPseudo() + "|";
 				}
@@ -164,7 +165,7 @@ public class Main {
 				System.out.println("Le joueur " + alJoueursVinqueurs.get(0).getPseudo() + " remporte la partie");
 				return;
 			} else {
-				String res = "il y a égalité entre " + alJoueursVinqueurs.size() +" joueurs (";
+				String res = "Il y a égalité entre " + alJoueursVinqueurs.size() +" joueurs (";
 				for (Joueur joueur : alJoueursVinqueurs) {
 					res += joueur.getPseudo() + "|";
 				}
