@@ -20,7 +20,6 @@ public class Plateau {
 				plateau[i][j] = new Cellule();
 			}
 		}
-
 	}
 
 	public Cellule[][] getPlateau() {
@@ -28,7 +27,7 @@ public class Plateau {
 	}
 
 	public Cellule getCelluleAt(final int ligne,final int colonne) {
-		if(  (ligne >= 0 && colonne >= 0) && (ligne <= LIGNE && colonne <= COLONNE) ){
+		if(  (ligne >= 0 && colonne >= 0) && (ligne < LIGNE && colonne < COLONNE) ){
 			return plateau[ligne][colonne];
 		}
 		return null;
@@ -39,8 +38,10 @@ public class Plateau {
 		joueur.retraitPions();
 		Cellule[] tabcCellules = getCelluleAutour(ligne, colonne, coin);
 		for (int i = 0; i < 4; i++) {
-			tabcCellules[i].captureCoin(joueur, i+1);
-			captureCellule(tabcCellules[i], joueur);
+			if(tabcCellules[i] != null) {
+				tabcCellules[i].captureCoin(joueur, i+1);
+				captureCellule(tabcCellules[i], joueur);
+			}
 		}
 	}
 
@@ -55,9 +56,6 @@ public class Plateau {
 		}
 
 		Entry<String, Integer> entry = coinsCapture.entrySet().stream().max((e1, e2) -> Integer.compare(e1.getValue(), e2.getValue())).get();
-
-		System.out.println(coinsCapture.toString());
-		//System.out.println(entry.getKey() + " || " + entry.getValue());
 
 		for (Entry<String, Integer> hash : coinsCapture.entrySet()) {
 			if(cell.isCaptured() && entry.getValue() == hash.getValue() && !entry.getKey().equals(hash.getKey())) {

@@ -14,6 +14,7 @@ public class Main {
 	private Plateau plateau;
 	private int nbJoueurs;
 	private Joueur[] tabJoueurs;
+	private Joueur joueurActuel;
 	private int numJoueurEnCours;
     
 
@@ -81,8 +82,45 @@ public class Main {
 				System.out.println(tabJoueurs[cpt].getPseudo());
 		
 		numJoueurEnCours = 1;
+		joueurActuel = tabJoueurs[0];
 	}
 
-	public void setCapture(int ligne, int colonne, int numCoin){ System.out.println(ligne + " " + colonne + " " + numCoin); }
+	public void joueurSuivant () {
+        for (int i = 0; i < this.tabJoueurs.length; i++) {
+            if ( this.joueurActuel.getPseudo().equals(this.tabJoueurs[i].getPseudo())) {
+                if ( i == this.tabJoueurs.length-1 ) { this.joueurActuel = tabJoueurs[0];   }
+                else                                 { this.joueurActuel = tabJoueurs[i+1]; }
+				return;
+            }
+        }
+    }
 
+	public boolean verifFinPartie() {
+		if(plateau.isFull()) {
+			return true;
+		}
+
+		for (int i = 0; i < tabJoueurs.length; i++) {
+			if(tabJoueurs[i].getPionsRestants() > 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public void setCapture(int ligne, int colonne, int numCoin) {
+		if(verifFinPartie()) {
+			System.out.println("la partie est fini");
+			return;
+		}
+		plateau.captureCoinCellule(ligne, colonne, joueurActuel, numCoin);
+		System.out.println(joueurActuel);
+		if(verifFinPartie()) {
+			System.out.println("la partie est fini");
+			return;
+		}
+		do {
+			joueurSuivant();
+		} while (joueurActuel.getPionsRestants() == 0);
+	}
 }

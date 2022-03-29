@@ -23,7 +23,7 @@ public class Joueur {
 	public int getPionsRestants() {
 		return nbPionsRestants;
 	}
-
+	
 	public void addPoints(int points) {
 		this.points += points;
 	}
