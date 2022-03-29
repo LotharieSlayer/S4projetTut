@@ -18,6 +18,12 @@ import javax.swing.JFrame;
  * FrameJeu permet d'afficher les informations de la partie ainsi que le plateau du jeu
  */
 public class FrameJeu extends JFrame {
+    private PanelLabel pnlLab;
+    private PanelTablier pnlTabl;
+    private PanelJoueurGauche pnlJouG;
+    private PanelJoueurDroite pnlJouD;
+
+
 	/**
      * Constructeur de FrameJeu
      * @param instance Implémentation de l'instance dans FrameJeu
@@ -25,10 +31,10 @@ public class FrameJeu extends JFrame {
     public FrameJeu(Main instance){
 
         // IMPORTS
-        PanelJoueurGauche pnlJouG = new PanelJoueurGauche(instance) ;
-        PanelJoueurDroite pnlJouD = new PanelJoueurDroite(instance) ;
-        PanelTablier pnlTabl = new PanelTablier(instance) ;
-        PanelLabel pnlLab = new PanelLabel(instance);
+        this.pnlJouG = new PanelJoueurGauche(instance) ;
+        this.pnlJouD = new PanelJoueurDroite(instance) ;
+        this.pnlTabl = new PanelTablier(instance) ;
+        this.pnlLab = new PanelLabel(instance);
 
         // INIT
         int widthFrame = 1280;
@@ -53,7 +59,11 @@ public class FrameJeu extends JFrame {
 
     }
 
-    public void update() {
+    public void maj() {
         this.repaint();
+        this.pnlLab.maj();
+        this.pnlTabl.maj();
+        this.pnlJouG.maj();
+        this.pnlJouD.maj();
     }
 }

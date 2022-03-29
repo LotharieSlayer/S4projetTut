@@ -28,7 +28,7 @@ public class PanelTablier extends JPanel implements ActionListener{
     public PanelTablier(Main instance){
         this.instance = instance;
         JPanel pnlVide = new JPanel();
-        panelGrille pnlGrille = new panelGrille();
+        PanelGrille pnlGrille = new PanelGrille();
         pnlVide.setPreferredSize(new Dimension(0,0));
         pnlGrille.setLayout(new GridLayout(10,7));
         pnlGrille.setSize(new Dimension(680, 720*4/5));
@@ -64,10 +64,16 @@ public class PanelTablier extends JPanel implements ActionListener{
                 FrameSelectionCoin frameSelectionCoin = new FrameSelectionCoin(instance, ligne, colonne);
             }
             }
-        }            
+        }   
+        
     }
 
-    class panelGrille extends JPanel{
+      
+    public void maj() {
+        //Mettre des trucs pour maj la grille (notamment les rectangles ou faut changer )
+    }
+
+    class PanelGrille extends JPanel{
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);

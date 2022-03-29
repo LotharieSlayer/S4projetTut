@@ -183,6 +183,6 @@ public class Main {
 			joueurActuel = tabJoueurs[numJoueurEnCours-1];
         } while (joueurActuel.getPionsRestants() == 0);
 
-		fj.update();
+		fj.maj();
     }
 }

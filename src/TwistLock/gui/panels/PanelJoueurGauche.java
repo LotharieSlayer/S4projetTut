@@ -11,9 +11,11 @@ public class PanelJoueurGauche extends JPanel{
 
     private PanelJoueur joueur1;
     private PanelJoueur joueur3;
-
+    private Main instance;
+    
     public PanelJoueurGauche(Main instance){
-        
+        this.instance = instance;
+
         if( instance.getNbJoueurs()>2){
             setLayout(new GridLayout(2,1));
             joueur1 = new PanelJoueur(instance, "rouge");
@@ -24,6 +26,18 @@ public class PanelJoueurGauche extends JPanel{
         else{
             joueur1 = new PanelJoueur(instance, "rouge");
             add(joueur1, BorderLayout.CENTER);
+        }
+    }
+
+      
+    public void maj() {
+        //Mettre des trucs pour maj
+        if( instance.getNbJoueurs()>2){
+            this.joueur1.maj();
+            this.joueur3.maj();
+        }
+        else{
+            this.joueur1.maj();
         }
     }
 }

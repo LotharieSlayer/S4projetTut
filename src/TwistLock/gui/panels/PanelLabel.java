@@ -36,7 +36,7 @@ public class PanelLabel extends JPanel{
     public PanelLabel(Main instance){
 
 		this.instance = instance;
-        label = new JLabel("C'est au tour de " + instance.getPseudoJoueur(instance.getNumJoueurEnCours()));
+        this.label = new JLabel("C'est au tour de " + instance.getPseudoJoueur(instance.getNumJoueurEnCours()));
 
 		/*try {
 			String fName = "../../../res/fonts/Montserrat-Bold.ttf";
@@ -63,4 +63,9 @@ public class PanelLabel extends JPanel{
             e.printStackTrace();
         }
     }
+
+	public void maj()
+	{
+		this.label.setText("C'est au tour de " + instance.getPseudoJoueur(instance.getNumJoueurEnCours()));
+	}
 }
