@@ -55,13 +55,31 @@ public class FramePseudo extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
+        boolean valide = true;
         if(e.getSource() == valider){
             for(int cpt = 0; cpt < tf.length; cpt++){
-                joueurs[cpt]=Joueur.creerJoueur(tf[cpt].getText());
+                if(tf[cpt].getText().equals("") || tf[cpt].getText() == null){
+                    tf[cpt].setText("Un pseudo ne peut pas être vide");
+                    valide = false;
+                }
+                else{
+                    for(JTextField jtf:tf){
+                        if(tf[cpt].getText().equals(jtf.getText()) && tf[cpt] != jtf){
+                            jtf.setText("Les pseudos ne peuvent pas être identique");
+                            tf[cpt].setText("Les pseudos ne peuvent pas être identique");
+                            valide=false;
+                        }
+                    }
+                }
+                if(valide){
+                    joueurs[cpt]=Joueur.creerJoueur(tf[cpt].getText());
+                }
             }
-            instance.setJoueurs(joueurs);
-            instance.lancerFrameJeu();
-            this.dispose();
+            if(valide){
+                instance.setJoueurs(joueurs);
+                instance.lancerFrameJeu();
+                this.dispose();
+            }
         }
         
     }
