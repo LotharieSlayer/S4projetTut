@@ -54,6 +54,6 @@ public class Joueur {
 
 	@Override
 	public String toString() {
-		return "[joueur " + pseudo +" {points = " + points + ", pions restant = " + nbPionsRestants + "}]";
+		return "[joueur " + pseudo +" {points = " + points + ", pions restants = " + nbPionsRestants + "}]";
 	}
 }
