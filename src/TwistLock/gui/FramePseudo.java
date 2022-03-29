@@ -15,6 +15,9 @@ import javax.swing.event.*;
 import TwistLock.Main;
 import TwistLock.utils.Joueur;
 
+/**
+ * FramePseudo affiche une fenêtre qui permet de rentrer les pseudos des joueurs
+ */
 public class FramePseudo extends JFrame implements ActionListener{
 
     private JTextField[] tf;
@@ -22,6 +25,10 @@ public class FramePseudo extends JFrame implements ActionListener{
     private JButton  valider;
     private Main instance;
 
+    /**
+     * Constructeur de FramePseudo
+     * @param instance Implémentation de l'instance dans FramePseudo
+     */
     public FramePseudo(Main instance){
 
         tf = new JTextField[instance.getNbJoueurs()];
@@ -52,9 +59,11 @@ public class FramePseudo extends JFrame implements ActionListener{
 		setVisible(true);
     }
 
-    @Override
+    /**
+     * permet de savoir si les pseudos sont corrects, d'envoyer les joueurs créés au Main et de lancer FrameJeu
+     * @param e événement qui vient d'être éxécuté
+     */
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
         boolean valide = true;
         if(e.getSource() == valider){
             for(int cpt = 0; cpt < tf.length; cpt++){

@@ -11,8 +11,11 @@ import java.awt.GridLayout;
 
 import TwistLock.Main;
 
+/**
+ * FrameConfig affiche une page qui permet de choisir le nombre de joueurs
+ */
 public class FrameConfig extends JFrame implements ActionListener{
-
+    
     private ButtonGroup choixNbJ = new ButtonGroup();
     private JRadioButton deux = new JRadioButton("2 joueurs");
     private JRadioButton trois = new JRadioButton("3 joueurs");
@@ -24,6 +27,10 @@ public class FrameConfig extends JFrame implements ActionListener{
 
     private int nbJoueurs;
 
+    /**
+     * Constructeur de FrameConfig
+     * @param instance Implémentation de l'instance dans FrameConfig
+     */
     public FrameConfig(Main instance){
 
         this.instance = instance;
@@ -56,6 +63,11 @@ public class FrameConfig extends JFrame implements ActionListener{
 
         setVisible(true);
     }
+
+    /**
+     * permet de changer le nombre de joueurs dans nbJoueurs lorsqu'on clique sur un radio bouton
+     * @param e événement qui vient d'être éxécuté
+     */
     void radioButtons_itemStateChanged(ItemEvent e) {
         Object source = e.getSource();
         if (source == deux) nbJoueurs = 2;
@@ -63,9 +75,11 @@ public class FrameConfig extends JFrame implements ActionListener{
         if (source == quatre) nbJoueurs = 4;
     }
 
-    @Override
+    /**
+     * permet d'envoyer le nombre de joueurs au Main et de lancer FramePseudo
+     * @param e événement qui vient d'être éxécuté
+     */
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
         if(e.getSource() == valider){
             if(nbJoueurs == 0) nbJoueurs = 2;
             instance.setNbJoueurs(nbJoueurs);
