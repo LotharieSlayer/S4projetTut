@@ -64,6 +64,10 @@ public class Cellule {
 		}
 	}
 
+	public Joueur getCaptureby() {
+		return captureby;
+	}
+
 	public int getValue  (              ) { return this.value;      }
 	public int getCoin   (final int coin) { return tabCoin[coin];   }
 	public Joueur coinCaptureBy (final int coin) {return tabJoueurCapture[coin];}

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import TwistLock.gui.FrameConfig;
 import TwistLock.gui.FrameJeu;
+import TwistLock.utils.Cellule;
 import TwistLock.utils.Joueur;
 import TwistLock.utils.Plateau;
 import TwistLock.gui.FramePseudo;
@@ -53,6 +54,11 @@ public class Main {
 	public int getPionsRestants(int numJoueur)
 	{
 		return this.tabJoueurs[numJoueur-1].getPionsRestants();
+	}
+
+	public Cellule getCelluleAt(int ligne,int colonne)
+	{
+		return plateau.getCelluleAt(ligne, colonne);
 	}
 
 	public int getNumJoueurEnCours()
