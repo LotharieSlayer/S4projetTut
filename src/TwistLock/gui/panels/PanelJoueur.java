@@ -27,12 +27,12 @@ public class PanelJoueur extends JPanel{
                 forme="carre";
                 numJoueur=1;
                 break;
-            case "bleu":
-                forme="rond";
-                numJoueur=2;
-                break;
             case "vert":
                 forme="triangle";
+                numJoueur=2;
+                break;
+            case "bleu":
+                forme="rond";
                 numJoueur=3;
                 break;
             case "jaune":
