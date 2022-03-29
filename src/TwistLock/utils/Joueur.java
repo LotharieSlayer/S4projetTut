@@ -16,7 +16,7 @@ public class Joueur {
 
 	private Joueur(String pseudo,int id) {
 		this.pseudo = pseudo;
-		numJoueur = id+1;
+		numJoueur = id;
 
 		this.points           =  0;
 		this.nbPionsRestants  = 20;
