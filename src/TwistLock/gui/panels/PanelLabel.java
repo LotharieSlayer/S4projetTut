@@ -36,7 +36,7 @@ public class PanelLabel extends JPanel{
     public PanelLabel(Main instance){
 
 		this.instance = instance;
-        this.label = new JLabel("C'est au tour de " + instance.getPseudoJoueur(instance.getNumJoueurEnCours()));
+        this.label = new JLabel("C'est au tour de " + instance.getPseudoJoueur(instance.getNumJoueurEnCours()) + ", cliquez sur la valeur que vous souhaitez !");
 
 		/*try {
 			String fName = "../../../res/fonts/Montserrat-Bold.ttf";
@@ -58,7 +58,7 @@ public class PanelLabel extends JPanel{
     protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		try {
-            g.drawImage(ImageIO.read(new File("../res/labels/j" + instance.getNumJoueurEnCours() + ".png")), 0, 0, null);
+            g.drawImage(ImageIO.read(new File("../res/labels/j" + instance.getNumJoueurEnCours() + ".png")), 120, 0, null);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -66,6 +66,6 @@ public class PanelLabel extends JPanel{
 
 	public void maj()
 	{
-		this.label.setText("C'est au tour de " + instance.getPseudoJoueur(instance.getNumJoueurEnCours()));
+		this.label.setText("C'est au tour de " + instance.getPseudoJoueur(instance.getNumJoueurEnCours()) + ", cliquez sur la valeur que vous souhaitez !");
 	}
 }

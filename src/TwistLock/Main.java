@@ -186,4 +186,8 @@ public class Main {
 
 		fj.maj();
     }
+
+	public int getScoreJoueur(int numJoueur) {
+		return tabJoueurs[numJoueur-1].getPoints();
+	}
 }

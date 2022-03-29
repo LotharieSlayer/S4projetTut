@@ -42,12 +42,12 @@ public class FrameSelectionCoin extends JFrame implements ActionListener{
         this.ligne = ligne;
         this.colonne = colonne;
 
-        int widthFrame = 1280;
-        int heightFrame = 720;
+        int widthFrame = 600;
+        int heightFrame = 350;
         
         setSize(widthFrame, heightFrame);
 		setTitle ("Séléction du coin");
-        setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+        setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 
         setLayout(new GridLayout(6,1));
 

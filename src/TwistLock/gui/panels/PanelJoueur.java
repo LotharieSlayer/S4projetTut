@@ -10,7 +10,8 @@ import javax.swing.border.Border;
 import TwistLock.Main;
 
 import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 
 public class PanelJoueur extends JPanel{
     private JLabel nom;
@@ -18,10 +19,26 @@ public class PanelJoueur extends JPanel{
     private JLabel[] twistLock = new JLabel[20];
     private String forme;
     private int numJoueur;
+    private Main instance;
+    private String coul;
+
+    private JLabel points = new JLabel();
+    private JPanel pnlInfo = new JPanel();
+    private JPanel pnlPoints = new JPanel();
 
     public PanelJoueur(Main instance, String coul){
+        this.instance = instance;
+        this.coul = coul;
+
         Border lineborder = BorderFactory.createLineBorder(Color.black, 1); 
         setBorder(lineborder);
+        setLayout(new BorderLayout());
+
+        pnlInfo.setLayout(new BorderLayout());
+        pnlPoints.setLayout(new GridLayout(2,10));
+
+        // pnlInfo
+
         switch(coul){
             case "rouge":
                 forme="carre";
@@ -41,29 +58,32 @@ public class PanelJoueur extends JPanel{
                 break;
         }
         nom = new JLabel(instance.getPseudoJoueur(numJoueur), new ImageIcon("../res/img/" + forme + ".png"), SwingConstants.CENTER);
-        add(nom);
-        //setLayout(new GridLayout(2,1));
+        pnlInfo.add(nom);
         for(int i = 0; i < instance.getPionsRestants(numJoueur) ; i++)
         {
-            twistLock[i] = new JLabel(new ImageIcon("../res/img/rond-" + coul + ".png"), SwingConstants.CENTER);
-            add(twistLock[i]);
+            twistLock[i] = new JLabel(new ImageIcon("../res/img/rond-j" + numJoueur + ".png"), SwingConstants.CENTER);
+            pnlPoints.add(twistLock[i]);
         }
+
+        points.setText("Score : " + String.valueOf(instance.getScoreJoueur(numJoueur)));
+
+        add(pnlInfo, BorderLayout.NORTH);
+        add(pnlPoints, BorderLayout.CENTER);
+        add(points, BorderLayout.SOUTH);
+
+        
     }
 
     public void maj() {
-        //Mettre des trucs pour maj
-        System.out.println("je fais la maj");
-    }
 
-    /*public void paint(Graphics g){
-    
-        g.drawLine(10, 10, 1160, 840);
-        g.setColor(new Color(255,105,180));
-        g.fillOval(10, 10, 10, 10);
-        g.fillOval(50, 60, 10, 10);
-        g.fillOval(200, 100, 10, 10);
-        g.fillOval(300, 400, 10, 10);
-        g.fillOval(1170, 850, 10, 10);
-        
-    }*/
+        pnlPoints.removeAll();
+        for(int i = 0; i < instance.getPionsRestants(numJoueur) ; i++)
+        {
+            twistLock[i] = new JLabel(new ImageIcon("../res/img/rond-j" + numJoueur + ".png"), SwingConstants.CENTER);
+            pnlPoints.add(twistLock[i]);
+        }
+        points.setText("Score : " + String.valueOf(instance.getScoreJoueur(numJoueur)));
+        add(points, BorderLayout.SOUTH);
+
+    }
 }

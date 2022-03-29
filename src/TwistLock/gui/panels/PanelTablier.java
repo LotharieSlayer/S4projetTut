@@ -94,12 +94,12 @@ public class PanelTablier extends JPanel implements ActionListener{
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            try {
-                g.drawImage(ImageIO.read(new File("../res/img/rond-rouge.png")), 70, this.getHeight()/16, null);
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            // try {
+            //     // g.drawImage(ImageIO.read(new File("../res/img/rond-rouge.png")), 70, this.getHeight()/16, null);
+            // } catch (IOException e) {
+            //     // TODO Auto-generated catch block
+            //     e.printStackTrace();
+            // }
         }
     }
 }
