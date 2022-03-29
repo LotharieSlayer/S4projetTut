@@ -4,7 +4,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.BorderLayout;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,19 +20,27 @@ public class PanelTablier extends JPanel implements ActionListener{
 
     private Main instance;
 
-    private RectangleButton[][] rectangleButton = new RectangleButton[10][7];
+    private RectangleButton[][] rectangleButton = new RectangleButton[15][15];
     public PanelTablier(Main instance){
         this.instance = instance;
-        //setLayout(new GridLayout(2,1));
+        JPanel pnlVide = new JPanel();
+        JPanel pnlGrille = new JPanel();
+        pnlVide.setPreferredSize(new Dimension(0,0));
+        pnlGrille.setLayout(new GridLayout(10,7));
+
         for(int i = 0; i < 10 ; i++)
         {
             for(int j = 0; j < 7; j++)
             {
                 rectangleButton[i][j] = new RectangleButton(i, j, String.valueOf(instance.getValeurCelulle(i, j)));
                 rectangleButton[i][j].addActionListener(this);
-                add(rectangleButton[i][j]);
+                pnlGrille.add(rectangleButton[i][j]);
             }
         }
+
+        add(pnlGrille, BorderLayout.CENTER);
+        add(pnlVide, BorderLayout.EAST);
+        add(pnlVide, BorderLayout.WEST);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -39,8 +50,8 @@ public class PanelTablier extends JPanel implements ActionListener{
         for (int i = 0; i < rectangleButton.length; i++) {
             for (int j = 0; j < rectangleButton[i].length; j++) {
             if(e.getSource() == rectangleButton[i][j]){
-                int ligne = rectangleButton[i][j].getNbY();
-                int colonne = rectangleButton[i][j].getNbX();
+                int ligne = rectangleButton[i][j].getNbX();
+                int colonne = rectangleButton[i][j].getNbY();
                     
                 //ligne colonne point
                 FrameSelectionCoin frameSelectionCoin = new FrameSelectionCoin(instance, ligne, colonne);
