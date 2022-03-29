@@ -19,7 +19,7 @@ public class Cellule {
 		this.x = x+1;
 		this.y = y;
 		this.isCaptured = false;
-		this.value = 1;//(int) (Math.random() * 50 + 5);
+		this.value = (int) (Math.random() * 50 + 5);
 
 		this.tabCoin = new int[NB_COIN];
 

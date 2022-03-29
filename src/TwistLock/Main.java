@@ -112,27 +112,6 @@ public class Main {
 	public void setCapture(int ligne, int colonne, int numCoin) {
 		Joueur joueurActuel = tabJoueurs[numJoueurEnCours-1];
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		if(verifFinPartie()) {
 			ArrayList<Joueur> alJoueursVinqueurs = new ArrayList<>();
 			int pointsMax = 0;
