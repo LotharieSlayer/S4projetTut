@@ -1,6 +1,7 @@
 package TwistLock;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import TwistLock.gui.FrameConfig;
 import TwistLock.gui.FrameJeu;
@@ -96,7 +97,7 @@ public class Main {
         for (int i = 0; i < tabJoueurs.length; i++) {
             if ( tabJoueurs[numJoueurEnCours-1].getPseudo().equals(tabJoueurs[i].getPseudo())) {
                 if ( i == tabJoueurs.length-1 ) { numJoueurEnCours = 1;   }
-                else                            { ++numJoueurEnCours; }
+                else                            { numJoueurEnCours++;     }
 				return;
             }
         }
@@ -116,18 +117,70 @@ public class Main {
 
 	public void setCapture(int ligne, int colonne, int numCoin) {
 		Joueur joueurActuel = tabJoueurs[numJoueurEnCours-1];
+
 		if(verifFinPartie()) {
-			System.out.println("la partie est fini");
-			return;
+			ArrayList<Joueur> alJoueursVinqueurs = new ArrayList<>();
+			int pointsMax = 0;
+
+			for (Joueur joueur : tabJoueurs) {
+				if(joueur.getPoints() > pointsMax) {
+					pointsMax = joueur.getPoints();
+				}
+			}
+	
+			for (Joueur joueur : tabJoueurs) {
+				if(joueur.getPoints() == pointsMax) {
+					alJoueursVinqueurs.add(joueur);
+				}
+			}
+	
+			if(alJoueursVinqueurs.size() == 1) {
+				System.out.println("Le joueur " + alJoueursVinqueurs.get(0).getPseudo() + " remporte la partie");
+				return;
+			} else {
+				String res = "il y a égalité entre " + alJoueursVinqueurs.size() +" joueurs (";
+				for (Joueur joueur : alJoueursVinqueurs) {
+					res += joueur.getPseudo() + "|";
+				}
+				System.out.println(res.substring(0, res.length()-1) + ")");
+				return;
+			}
 		}
-		plateau.captureCoinCellule(ligne, colonne, joueurActuel, numCoin);
-		System.out.println(joueurActuel);
+		
+        plateau.captureCoinCellule(ligne, colonne, joueurActuel, numCoin);
+        System.out.println(joueurActuel);
+
 		if(verifFinPartie()) {
-			System.out.println("la partie est fini");
-			return;
+			ArrayList<Joueur> alJoueursVinqueurs = new ArrayList<>();
+			int pointsMax = 0;
+
+			for (Joueur joueur : tabJoueurs) {
+				if(joueur.getPoints() > pointsMax) {
+					pointsMax = joueur.getPoints();
+				}
+			}
+	
+			for (Joueur joueur : tabJoueurs) {
+				if(joueur.getPoints() == pointsMax) {
+					alJoueursVinqueurs.add(joueur);
+				}
+			}
+	
+			if(alJoueursVinqueurs.size() == 1) {
+				System.out.println("Le joueur " + alJoueursVinqueurs.get(0).getPseudo() + " remporte la partie");
+				return;
+			} else {
+				String res = "il y a égalité entre " + alJoueursVinqueurs.size() +" joueurs (";
+				for (Joueur joueur : alJoueursVinqueurs) {
+					res += joueur.getPseudo() + "|";
+				}
+				System.out.println(res.substring(0, res.length()-1) + ")");
+				return;
+			}
 		}
-		do {
-			joueurSuivant();
-		} while (joueurActuel.getPionsRestants() == 0);
-	}
+        do {
+            joueurSuivant();
+			joueurActuel = tabJoueurs[numJoueurEnCours-1];
+        } while (joueurActuel.getPionsRestants() == 0);
+    }
 }

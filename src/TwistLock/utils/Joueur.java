@@ -18,7 +18,7 @@ public class Joueur {
 	private Joueur(String pseudo) {
 		this.pseudo = pseudo;
 
-		this.points           = 0;
+		this.points           =  0;
 		this.nbPionsRestants  = 20;
 	}
 
@@ -38,6 +38,10 @@ public class Joueur {
 		if(nbPionsRestants == 0) return false;
 		nbPionsRestants--;
 		return true;
+	}
+
+	public int getPoints() {
+		return points;
 	}
 
 	public String getPseudo() {

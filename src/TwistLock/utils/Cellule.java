@@ -1,7 +1,5 @@
 package TwistLock.utils;
 
-import java.util.HashMap;
-
 public class Cellule {
 	
 	private final int NB_COIN = 4;
@@ -18,7 +16,7 @@ public class Cellule {
 	private Joueur[] tabJoueurCapture;
 
 	public Cellule(int x,int y) {
-		this.x = x;
+		this.x = x+1;
 		this.y = y;
 		this.isCaptured = false;
 		this.value = (int) (Math.random() * 50 + 5);
@@ -40,7 +38,7 @@ public class Cellule {
 
 	//stock le pseudo de la prise de capture
 	public void captureCoin(Joueur joueur, int coin) {
-		System.out.println("Le coins " + (coin-1) + "de la cellule " + x + (char) (65 + y) + " à été capturé par " + joueur.getPseudo());
+		System.out.println("Le coins " + coin + "de la cellule " + x + (char) (65 + y) + " à été capturé par " + joueur.getPseudo());
 		tabJoueurCapture[coin-1] = joueur;
 	}
 
