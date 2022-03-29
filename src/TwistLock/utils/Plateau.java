@@ -37,6 +37,12 @@ public class Plateau {
 		if(isFull()){return;}
 		joueur.retraitPions();
 		Cellule[] tabcCellules = getCelluleAutour(ligne, colonne, coin);
+		
+		if(tabcCellules[coin-1].isCaptured()){ 
+			joueur.retraitPions();
+			return;
+		}
+		
 		for (int i = 0; i < 4; i++) {
 			if(tabcCellules[i] != null) {
 				tabcCellules[i].captureCoin(joueur, i+1);
