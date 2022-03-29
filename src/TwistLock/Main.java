@@ -14,7 +14,6 @@ public class Main {
 	private Plateau plateau;
 	private int nbJoueurs;
 	private Joueur[] tabJoueurs;
-	private Joueur joueurActuel;
 	private int numJoueurEnCours;
     
 
@@ -61,6 +60,10 @@ public class Main {
 		return numJoueurEnCours;
 	}
 
+	public void setNumJoueurEnCours(int num){
+		this.numJoueurEnCours = num;
+	}
+
 	public void captureCoineCellule(int ligne, int colonne, Joueur joueur, int coin){
 		plateau.captureCoinCellule(ligne, colonne, joueur, coin);
 	}
@@ -81,14 +84,13 @@ public class Main {
 			if(tabJoueurs[cpt] != null)
 		
 		numJoueurEnCours = 1;
-		joueurActuel = tabJoueurs[0];
 	}
 
 	public void joueurSuivant () {
-        for (int i = 0; i < this.tabJoueurs.length; i++) {
-            if ( this.joueurActuel.getPseudo().equals(this.tabJoueurs[i].getPseudo())) {
-                if ( i == this.tabJoueurs.length-1 ) { this.joueurActuel = tabJoueurs[0];   }
-                else                                 { this.joueurActuel = tabJoueurs[i+1]; }
+        for (int i = 0; i < tabJoueurs.length; i++) {
+            if ( tabJoueurs[numJoueurEnCours-1].getPseudo().equals(tabJoueurs[i].getPseudo())) {
+                if ( i == tabJoueurs.length-1 ) { numJoueurEnCours = 1;   }
+                else                            { ++numJoueurEnCours; }
 				return;
             }
         }
@@ -98,7 +100,6 @@ public class Main {
 		if(plateau.isFull()) {
 			return true;
 		}
-
 		for (int i = 0; i < tabJoueurs.length; i++) {
 			if(tabJoueurs[i].getPionsRestants() > 0) {
 				return false;
@@ -108,6 +109,7 @@ public class Main {
 	}
 
 	public void setCapture(int ligne, int colonne, int numCoin) {
+		Joueur joueurActuel = tabJoueurs[numJoueurEnCours-1];
 		if(verifFinPartie()) {
 			System.out.println("la partie est fini");
 			return;
