@@ -41,10 +41,10 @@ public class FrameJeu extends JFrame {
 		setVisible(true);
 
         // EDIT PNL
-        pnlJouG.setPreferredSize(new Dimension(widthFrame*1/5, heightFrame*4/5)); // pnl gauche
-        pnlTabl.setPreferredSize(new Dimension(widthFrame*3/5, heightFrame*4/5)); // pnl Tablier
+        pnlJouG.setPreferredSize(new Dimension(300, heightFrame*4/5)); // pnl gauche
         pnlLab.setPreferredSize (new Dimension(widthFrame*3/5, heightFrame*1/5)); // pnl Label
-        pnlJouD.setPreferredSize(new Dimension(widthFrame*1/5, heightFrame*4/5)); // pnl droite
+        pnlJouD.setPreferredSize(new Dimension(300, heightFrame*4/5)); // pnl droite
+        //341
 
        // System.out.println(widthFrame*3/4);
         //System.out.println(widthFrame*1/4);

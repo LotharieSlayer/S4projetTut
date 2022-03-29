@@ -82,4 +82,7 @@ public class Main {
 		
 		numJoueurEnCours = 1;
 	}
+
+	public void setCapture(int ligne, int colonne, int numCoin){ System.out.println(ligne + " " + colonne + " " + numCoin); }
+
 }

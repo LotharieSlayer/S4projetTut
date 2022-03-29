@@ -40,12 +40,12 @@ public class PanelJoueur extends JPanel{
                 numJoueur=4;
                 break;
         }
-        nom = new JLabel(instance.getPseudoJoueur(numJoueur), new ImageIcon("./res/img/" + forme + ".png"), SwingConstants.CENTER);
+        nom = new JLabel(instance.getPseudoJoueur(numJoueur), new ImageIcon("../res/img/" + forme + ".png"), SwingConstants.CENTER);
         add(nom);
         //setLayout(new GridLayout(2,1));
         for(int i = 0; i < instance.getPionsRestants(numJoueur) ; i++)
         {
-            twistLock[i] = new JLabel(new ImageIcon("./res/img/rond-" + coul + ".png"), SwingConstants.CENTER);
+            twistLock[i] = new JLabel(new ImageIcon("../res/img/rond-" + coul + ".png"), SwingConstants.CENTER);
             add(twistLock[i]);
         }
     }
