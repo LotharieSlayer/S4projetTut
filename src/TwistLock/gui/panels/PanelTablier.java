@@ -33,7 +33,7 @@ public class PanelTablier extends JPanel implements ActionListener{
         PanelGrille pnlGrille = new PanelGrille();
         pnlVide.setPreferredSize(new Dimension(0,0));
         pnlGrille.setLayout(new GridLayout(10,7));
-        pnlGrille.setSize(new Dimension(680, 720*4/5));
+        pnlGrille.setSize(80*7, 46*10);
 
 
         for(int i = 0; i < 10 ; i++)
@@ -93,13 +93,25 @@ public class PanelTablier extends JPanel implements ActionListener{
     class PanelGrille extends JPanel{
         @Override
         protected void paintComponent(Graphics g) {
+            int x =6;
+            int y =9;
+            int coin = 3;
+            int numJoueur = 1;
+            File fichier = new File("../res/img/rond-j"+numJoueur+".png");
             super.paintComponent(g);
-            // try {
-            //     // g.drawImage(ImageIO.read(new File("../res/img/rond-rouge.png")), 70, this.getHeight()/16, null);
-            // } catch (IOException e) {
-            //     // TODO Auto-generated catch block
-            //     e.printStackTrace();
-            // }
+            
+            try {
+                switch(coin){
+                    case 1 -> g.drawImage(ImageIO.read(fichier), x*70+(x-1)*10, y*this.getHeight()/11-5+(y-1)*4, null);
+                    case 2 -> g.drawImage(ImageIO.read(fichier), (x+1)*70+(x+1-1)*10, y*this.getHeight()/11-5+(y-1)*4, null);
+                    case 3 -> g.drawImage(ImageIO.read(fichier), (x+1)*70+(x+1-1)*10, (y+1)*this.getHeight()/11-5+(y-1+1)*4, null);
+                    case 4 -> g.drawImage(ImageIO.read(fichier), x*70+(x-1)*10, (y+1)*this.getHeight()/11-5+(y-1+1)*4, null);
+                }
+                    
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
     }
 }
