@@ -79,7 +79,6 @@ public class Main {
 		this.tabJoueurs = tabJ;
 		for(int cpt = 0; cpt < tabJ.length; cpt++)
 			if(tabJoueurs[cpt] != null)
-				System.out.println(tabJoueurs[cpt].getPseudo());
 		
 		numJoueurEnCours = 1;
 		joueurActuel = tabJoueurs[0];

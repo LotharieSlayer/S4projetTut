@@ -6,6 +6,8 @@ public class Cellule {
 	
 	private final int NB_COIN = 4;
 
+	private int x, y;
+
 	private boolean isCaptured;
 	private Joueur  captureby;
 
@@ -15,7 +17,9 @@ public class Cellule {
 
 	private Joueur[] tabJoueurCapture;
 
-	public Cellule() {
+	public Cellule(int x,int y) {
+		this.x = x;
+		this.y = y;
 		this.isCaptured = false;
 		this.value = (int) (Math.random() * 50 + 5);
 
@@ -36,6 +40,7 @@ public class Cellule {
 
 	//stock le pseudo de la prise de capture
 	public void captureCoin(Joueur joueur, int coin) {
+		System.out.println("Le coins " + (coin-1) + "de la cellule " + x + (char) (65 + y) + " à été capturé par " + joueur.getPseudo());
 		tabJoueurCapture[coin-1] = joueur;
 	}
 
@@ -62,6 +67,13 @@ public class Cellule {
 	public int getValue  (              ) { return this.value;      }
 	public int getCoin   (final int coin) { return tabCoin[coin];   }
 	public Joueur coinCaptureBy (final int coin) {return tabJoueurCapture[coin];}
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
 
 	public void setToNeutral() {
 		captureby.removePoints(value);

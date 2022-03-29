@@ -17,7 +17,7 @@ public class Plateau {
 
 		for (int i = 0; i < plateau.length; i++) {
 			for (int j = 0; j < plateau[0].length; j++) {
-				plateau[i][j] = new Cellule();
+				plateau[i][j] = new Cellule(i,j);
 			}
 		}
 	}
@@ -40,12 +40,17 @@ public class Plateau {
 		for (int i = 0; i < 4; i++) {
 			if(tabcCellules[i] != null) {
 				tabcCellules[i].captureCoin(joueur, i+1);
-				captureCellule(tabcCellules[i], joueur);
+				if(captureCellule(tabcCellules[i], joueur)) {
+					System.out.println("la cellule " + tabcCellules[i].getX() + (char) (65 + tabcCellules[i].getY()) + " a été caturé"  );
+				} else {
+					System.out.println("la cellule " + tabcCellules[i].getX() + (char) (65 + tabcCellules[i].getY()) + " a été perdu"  );
+				}
+				
 			}
 		}
 	}
 
-	public void captureCellule(final Cellule cell,final Joueur joueur) {
+	public boolean captureCellule(final Cellule cell,final Joueur joueur) {
 
 		HashMap<String, Integer> coinsCapture = new HashMap<>();
 		for (int i = 0; i < 4; i++) {
@@ -60,11 +65,12 @@ public class Plateau {
 		for (Entry<String, Integer> hash : coinsCapture.entrySet()) {
 			if(cell.isCaptured() && entry.getValue() == hash.getValue() && !entry.getKey().equals(hash.getKey())) {
 				cell.setToNeutral();
-				return;
+				return false;
 			}
 		}
-
+		
 		cell.captureBy(joueur);
+		return true;
 	}
 
 	private Cellule[] getCelluleAutour(final int ligne, final int colonne,final int coin) {
