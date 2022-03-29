@@ -4,19 +4,19 @@ public class Joueur {
 	
 	private int points;
 	private int nbPionsRestants;
-	private static int numJoueur;
+	private int numJoueur;
 
 	private String pseudo;
 
 	public static Joueur creerJoueur(String pseudo, int id) {
-		numJoueur = id;
 		pseudo = pseudo.replaceAll("[ \t]", "");
 		if(pseudo == null || pseudo.equals("")){return null;}
-		return new Joueur(pseudo);
+		return new Joueur(pseudo,id);
 	}
 
-	private Joueur(String pseudo) {
+	private Joueur(String pseudo,int id) {
 		this.pseudo = pseudo;
+		numJoueur = id;
 
 		this.points           =  0;
 		this.nbPionsRestants  = 20;
@@ -48,7 +48,7 @@ public class Joueur {
 		return pseudo;
 	}
 
-	public static int getNumJoueur() {
+	public int getNumJoueur() {
 		return numJoueur;
 	}
 
