@@ -17,7 +17,7 @@ public class Main {
 	private int nbJoueurs;
 	private Joueur[] tabJoueurs;
 	private int numJoueurEnCours;
-    
+	private FrameJeu fj;
 
     public Main() throws IOException
 	{
@@ -82,7 +82,7 @@ public class Main {
 	}
 
 	public void lancerFrameJeu(){
-		FrameJeu fj = new FrameJeu(instance);
+		fj = new FrameJeu(instance);
 	}
 
 	public void setJoueurs(Joueur[] tabJ){
@@ -182,5 +182,7 @@ public class Main {
             joueurSuivant();
 			joueurActuel = tabJoueurs[numJoueurEnCours-1];
         } while (joueurActuel.getPionsRestants() == 0);
+
+		fj.update();
     }
 }

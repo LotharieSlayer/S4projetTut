@@ -52,4 +52,8 @@ public class FrameJeu extends JFrame {
         add(pnlJouD, BorderLayout.EAST);
 
     }
+
+    public void update() {
+        this.repaint();
+    }
 }
