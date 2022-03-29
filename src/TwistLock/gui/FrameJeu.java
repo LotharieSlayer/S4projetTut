@@ -15,10 +15,13 @@ import TwistLock.gui.panels.PanelJoueurGauche;
 import javax.swing.JFrame;
 
 /**
- * Frame du graphique avec les robots.
+ * FrameJeu permet d'afficher les informations de la partie ainsi que le plateau du jeu
  */
 public class FrameJeu extends JFrame {
-	
+	/**
+     * Constructeur de FrameJeu
+     * @param instance Implémentation de l'instance dans FrameJeu
+     */
     public FrameJeu(Main instance){
 
         // IMPORTS
@@ -30,9 +33,6 @@ public class FrameJeu extends JFrame {
         // INIT
         int widthFrame = 1280;
         int heightFrame = 720;
-
-        //System.out.println(widthFrame);
-        //System.out.println(heightFrame);
         setLocation(widthFrame / 10, heightFrame / 10);
 		setSize(widthFrame,heightFrame);
 		setResizable(false);
@@ -44,10 +44,6 @@ public class FrameJeu extends JFrame {
         pnlJouG.setPreferredSize(new Dimension(300, heightFrame*4/5)); // pnl gauche
         pnlLab.setPreferredSize (new Dimension(widthFrame*3/5, heightFrame*1/5)); // pnl Label
         pnlJouD.setPreferredSize(new Dimension(300, heightFrame*4/5)); // pnl droite
-        //341
-
-       // System.out.println(widthFrame*3/4);
-        //System.out.println(widthFrame*1/4);
 
         // ADD
         add(pnlJouG, BorderLayout.WEST);
@@ -57,5 +53,3 @@ public class FrameJeu extends JFrame {
 
     }
 }
-// Implémenter GraphPanel.java
-// Créer une autre class capable de get toutes les trames étant diffusé sur le port ayant la position du robot/des robots

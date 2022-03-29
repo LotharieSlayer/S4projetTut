@@ -11,6 +11,9 @@ import java.awt.GridLayout;
 
 import TwistLock.Main;
 
+/**
+ * fenêtre qui permet de choisir le coin de la case choisi sur le plateau
+ */
 public class FrameSelectionCoin extends JFrame implements ActionListener{
 
     private ButtonGroup choixNbJ = new ButtonGroup();
@@ -27,6 +30,12 @@ public class FrameSelectionCoin extends JFrame implements ActionListener{
     private int colonne;
     private int numCoin;
 
+    /**
+     * Constructeur de FrameSelectionCoin
+     * @param instance Implémentation de l'instance dans FramePseudo
+     * @param ligne Ligne de la case choisie sur le plateau
+     * @param colonne Colonne de la case choisie sur le plateau
+     */
     public FrameSelectionCoin(Main instance, int ligne, int colonne){
 
         this.instance = instance;
@@ -65,6 +74,11 @@ public class FrameSelectionCoin extends JFrame implements ActionListener{
 
         setVisible(true);
     }
+
+    /**
+     * permet de choisir le numéro du coin où placer le twistlock du joueur
+     * @param e événement qui vient d'être éxécuté
+     */
     void radioButtons_itemStateChanged(ItemEvent e) {
         Object source = e.getSource();
         if (source == deux) numCoin = 1;
@@ -73,9 +87,11 @@ public class FrameSelectionCoin extends JFrame implements ActionListener{
         if (source == quatre) numCoin = 4;
     }
 
-    @Override
+    /**
+     * lorsque le bouton valider est cliquer, envoi la capture du coin au main en indiquant la ligne, la colonne et le numéro de coin
+     * @param e événement qui vient d'être éxécuté
+     */
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
         if(e.getSource() == valider){
             if(numCoin == 0) numCoin = 1;
             instance.setCapture(ligne, colonne, numCoin);
