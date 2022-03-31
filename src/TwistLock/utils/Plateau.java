@@ -7,8 +7,8 @@ import TwistLock.Main;
 
 public class Plateau {
 
-	private static int LIGNE   = (int) Math.random()*10;
-	private static int COLONNE = (int) Math.random()*7;
+	private static int LIGNE   = (int) Math.random()*6+4;
+	private static int COLONNE = (int) Math.random()*6+4;
 
 	private Cellule[][] plateau;
 
