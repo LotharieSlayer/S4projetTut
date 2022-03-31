@@ -7,8 +7,8 @@ import TwistLock.Main;
 
 public class Plateau {
 
-	private final int LIGNE   = (int) Math.random()*6+4; // 10
-	private final int COLONNE = (int) Math.random()*6+4; // 7
+	private final int LIGNE   = (int) (Math.random()*6)+4; // 10
+	private final int COLONNE = (int) (Math.random()*6)+4; // 7
 
 	private Cellule[][] plateau;
 
@@ -59,7 +59,6 @@ public class Plateau {
 				} else {
 					System.out.println("La cellule " + tabcCellules[i].getX() + (char) (65 + tabcCellules[i].getY()) + " a été perdue"  );
 				}
-				
 			}
 		}
 	}
