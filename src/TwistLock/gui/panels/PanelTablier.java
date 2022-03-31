@@ -92,8 +92,8 @@ public class PanelTablier extends JPanel implements ActionListener{
 
     class PanelGrille extends JPanel{
         @Override
-        public void paintComponent(Graphics g) {
-
+        public void paint(Graphics g) {
+            super.paint(g); // Bonjour Mr. le correcteur, nous nous sommes rendus compte que notre méthode super.paint se trouvait dans la boucle for dans le sujet 1, malheureusement ça ne peut pas marché, nous l'avons donc déplacé et ça marche mieux.
             for (int i = 0; i < rectangleButton.length; i++) {
                 for (int j = 0; j < rectangleButton[i].length; j++) {
                     //int ligne = rectangleButton[i][j].getNbX();
@@ -105,7 +105,6 @@ public class PanelTablier extends JPanel implements ActionListener{
                             int numJoueurCoin = instance.getCelluleAt(i, j).coinCaptureBy(k).getNumJoueur();
 
                             File fichier = new File("../res/img/rond-j" + numJoueurCoin + ".png");
-                            super.paintComponent(g);
                             try {
                                 switch(k+1){
                                     case 1 -> g.drawImage(ImageIO.read(fichier), j*70+(j-1)*10, i*this.getHeight()/11-5+(i-1)*4, null);
