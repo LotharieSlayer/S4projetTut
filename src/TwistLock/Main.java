@@ -176,6 +176,14 @@ public class Main {
 		fj.maj();
     }
 
+	public int getNbLigne(){
+		return Plateau.getNbLigne();
+	}
+
+	public int getNbColonne(){
+		return Plateau.getNbColonne();
+	}
+
 	public int getScoreJoueur(int numJoueur) {
 		return tabJoueurs[numJoueur-1].getPoints();
 	}
