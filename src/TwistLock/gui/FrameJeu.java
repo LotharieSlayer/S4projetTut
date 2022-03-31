@@ -22,6 +22,7 @@ public class FrameJeu extends JFrame {
     private PanelTablier pnlTabl;
     private PanelJoueurGauche pnlJouG;
     private PanelJoueurDroite pnlJouD;
+    private Main instance;
 
 
 	/**
@@ -29,6 +30,8 @@ public class FrameJeu extends JFrame {
      * @param instance Implémentation de l'instance dans FrameJeu
      */
     public FrameJeu(Main instance){
+
+        this.instance = instance;
 
         // IMPORTS
         this.pnlJouG = new PanelJoueurGauche(instance) ;
@@ -65,5 +68,7 @@ public class FrameJeu extends JFrame {
         this.pnlTabl.maj();
         this.pnlJouG.maj();
         this.pnlJouD.maj();
+        System.out.println(instance.isFinished());
+
     }
 }

@@ -9,6 +9,7 @@ import TwistLock.utils.Cellule;
 import TwistLock.utils.Joueur;
 import TwistLock.utils.Plateau;
 import TwistLock.gui.FramePseudo;
+import TwistLock.gui.FrameVictoire;
 
 public class Main {
 
@@ -154,6 +155,7 @@ public class Main {
 
 		if(isFinished()) {
 			System.out.println(getResultat());
+            FrameVictoire frameVictoire = new FrameVictoire(instance);
 			return;
 		}
 		
@@ -162,6 +164,7 @@ public class Main {
 
 		if(isFinished()) {
 			System.out.println(getResultat());
+            FrameVictoire frameVictoire = new FrameVictoire(instance);
 			return;
 		}
 		

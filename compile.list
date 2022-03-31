@@ -11,6 +11,7 @@
 ./src/TwistLock/gui/FrameJeu.java
 ./src/TwistLock/gui/FramePseudo.java
 ./src/TwistLock/gui/FrameSelectionCoin.java
+./src/TwistLock/gui/FrameVictoire.java
 
 ./src/TwistLock/gui/panels/PanelJoueur.java
 ./src/TwistLock/gui/panels/PanelJoueurGauche.java
