@@ -19,6 +19,7 @@ public class Main {
 	private Joueur[] tabJoueurs;
 	private int numJoueurEnCours;
 	private FrameJeu fj;
+	private boolean enReseau;
 
     public Main() throws IOException
 	{
@@ -116,6 +117,14 @@ public class Main {
 		return true;
 	}
 
+	public boolean enReseau(){
+		return enReseau;
+	}
+
+	public void setEnReseau(boolean enReseau) {
+		this.enReseau = enReseau;
+	}
+
 	public String getResultat() {
 		String res = "";
 		if(isFinished()) {
@@ -150,7 +159,10 @@ public class Main {
 	}
 
 	public void setCapture(int ligne, int colonne, int numCoin) {
-		System.out.println();
+		if(enReseau) {
+			//???
+		} else {
+			System.out.println();
 		Joueur joueurActuel = tabJoueurs[numJoueurEnCours-1];
 
 		if(isFinished()) {
@@ -173,15 +185,17 @@ public class Main {
 			joueurActuel = tabJoueurs[numJoueurEnCours-1];
         } while (joueurActuel.getPionsRestants() == 0);
 
+		}
+
 		fj.maj();
     }
 
 	public int getNbLigne(){
-		return Plateau.getNbLigne();
+		return plateau.getNbLigne();
 	}
 
 	public int getNbColonne(){
-		return Plateau.getNbColonne();
+		return plateau.getNbColonne();
 	}
 
 	public int getScoreJoueur(int numJoueur) {
