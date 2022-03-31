@@ -20,3 +20,8 @@
 ./src/TwistLock/gui/panels/PanelTablier.java
 
 ./src/TwistLock/gui/buttons/RectangleButton.java
+
+./src/TwistLock/network/Client.java
+./src/TwistLock/utils/Cellule.java
+./src/TwistLock/utils/Joueur.java
+./src/TwistLock/utils/Plateau.java

@@ -25,20 +25,30 @@ import TwistLock.utils.Joueur;
 public class PanelTablier extends JPanel implements ActionListener{
 
     private Main instance;
+    private int nbLignes;
+    private int nbColonnes;
 
-    private RectangleButton[][] rectangleButton = new RectangleButton[10][7];
+    private RectangleButton[][] rectangleButton;
+
     public PanelTablier(Main instance){
         this.instance = instance;
+
+        nbLignes = instance.getNbLigne();
+        nbColonnes = instance.getNbColonne();
+        rectangleButton = new RectangleButton[nbLignes][nbColonnes];
+        System.out.println(nbLignes);
+        System.out.println(nbColonnes);
+
         JPanel pnlVide = new JPanel();
         PanelGrille pnlGrille = new PanelGrille();
         pnlVide.setPreferredSize(new Dimension(0,0));
-        pnlGrille.setLayout(new GridLayout(10,7));
-        pnlGrille.setSize(80*7, 46*10);
+        pnlGrille.setLayout(new GridLayout(nbLignes,nbColonnes));
+        pnlGrille.setSize(80*nbColonnes, 46*nbLignes);
 
 
-        for(int i = 0; i < 10 ; i++)
+        for(int i = 0; i < nbLignes ; i++)
         {
-            for(int j = 0; j < 7; j++)
+            for(int j = 0; j < nbColonnes; j++)
             {
                 rectangleButton[i][j] = new RectangleButton(instance, i, j, String.valueOf(instance.getValeurCelulle(i, j)));
                 rectangleButton[i][j].addActionListener(this);
