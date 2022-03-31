@@ -1,62 +1,77 @@
 package TwistLock.gui;
 
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 import java.awt.event.*;
 import java.awt.GridLayout;
 
 import TwistLock.Main;
 
-/**
- * FrameConfig affiche une page qui permet de choisir le nombre de joueurs
- */
 public class FrameConfig extends JFrame implements ActionListener{
-    
-    private ButtonGroup choixNbJ = new ButtonGroup();
-    private JRadioButton deux = new JRadioButton("2 joueurs");
-    private JRadioButton trois = new JRadioButton("3 joueurs");
-    private JRadioButton quatre = new JRadioButton("4 joueurs");
+
+    private JTextField portS = new JTextField();
+    private JTextField pseudoJ = new JTextField();
+    private JTextField ip = new JTextField();
+
+    private ButtonGroup choixNet = new ButtonGroup();
+    private JRadioButton client = new JRadioButton("client");
+    private JRadioButton serveur = new JRadioButton("serveur");
+
+    private int port;
 
     private JButton valider;
 
     private Main instance;
 
-    private int nbJoueurs;
+    private String pseudo;
+    private String adresseIP;
+    private String net;
 
-    /**
-     * Constructeur de FrameConfig
-     * @param instance Implémentation de l'instance dans FrameConfig
-     */
     public FrameConfig(Main instance){
 
         this.instance = instance;
 
-        int widthFrame = 1280;
-        int heightFrame = 720;
+        int widthFrame = 400;
+        int heightFrame = 350;
         
         setSize(widthFrame, heightFrame);
-		setTitle ("Nombre de joueurs");
+		setTitle ("Configuration");
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+        setLocation(750, 300);
 
-        setLayout(new GridLayout(5,1));
+        setLayout(new GridLayout(10,1));
 
         valider = new JButton("valider");
 
-        add(new JLabel("Nombre de joueurs"));
-        deux.setSelected(true);
-        choixNbJ.add(deux);
-        deux.addItemListener( this::radioButtons_itemStateChanged );
-        choixNbJ.add(trois);
-        trois.addItemListener( this::radioButtons_itemStateChanged );
-        choixNbJ.add(quatre);
-        quatre.addItemListener( this::radioButtons_itemStateChanged );
-        add(deux);
-        add(trois);
-        add(quatre);
+        add(new JLabel("Choix network"));
+        serveur.setSelected(true);
+        net = "serveur";
+
+        choixNet.add(serveur);
+        add(serveur);
+        serveur.addItemListener( this::radioButtons_itemStateChanged );
+
+        choixNet.add(client);
+        add(client);
+        client.addItemListener( this::radioButtons_itemStateChanged );
+        
+
+
+        add(new JLabel("Nom du joueur"));
+        add(pseudoJ);
+
+        add(new JLabel("Port du serveur"));
+        add(portS);
+
+        add(new JLabel("Adresse IP"));
+        add(ip);
+        ip.setEditable(false);
 
         add(valider);
         valider.addActionListener(this);
@@ -64,29 +79,45 @@ public class FrameConfig extends JFrame implements ActionListener{
         setVisible(true);
     }
 
-    /**
-     * permet de changer le nombre de joueurs dans nbJoueurs lorsqu'on clique sur un radio bouton
-     * @param e événement qui vient d'être éxécuté
-     */
     void radioButtons_itemStateChanged(ItemEvent e) {
         Object source = e.getSource();
-        if (source == deux) nbJoueurs = 2;
-        if (source == trois) nbJoueurs = 3;
-        if (source == quatre) nbJoueurs = 4;
+        if (source == serveur) { ip.setEditable(false); net = "serveur"; }
+        if (source == client) { ip.setEditable(true); net = "client"; }
     }
 
-    /**
-     * permet d'envoyer le nombre de joueurs au Main et de lancer FramePseudo
-     * @param e événement qui vient d'être éxécuté
-     */
+    @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == valider){
-            if(nbJoueurs == 0) nbJoueurs = 2;
-            instance.setNbJoueurs(nbJoueurs);
-            instance.lancerFramePseudo();
+        // TODO Auto-generated method stub
+        boolean valide = true;
+        if(portS.getText().equals("")) {
+            portS.setText("veuillez entrer le port d'un serveur");
+            valide = false;
+        }
+        else{ port = Integer.parseInt(portS.getText()); }
+
+        if(pseudoJ.getText().equals("")){
+            pseudoJ.setText("Un pseudo ne peut pas être vide");
+            valide = false;
+        }
+        else{ pseudo = pseudoJ.getText(); }
+
+        if(net.equals("client")){
+            if(pseudoJ.getText().equals("")){
+                pseudoJ.setText("Entrez une adresse IP valide");
+                valide = false;
+            }
+            else{
+                adresseIP = ip.getText();
+                instance.setIP(adresseIP);
+            }
+            
+        }
+        if(valide){
+            instance.setPort(port);
+            instance.setPseudo(pseudo);
+            //instance.lancerFrameJeu();
             this.dispose();
         }
         
     }
-    
 }

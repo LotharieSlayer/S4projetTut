@@ -20,6 +20,9 @@ public class Main {
 	private int numJoueurEnCours;
 	private FrameJeu fj;
 	private boolean enReseau;
+	private String pseudo;
+	private int port;
+	private String adresseIP;
 
     public Main() throws IOException
 	{
@@ -71,6 +74,18 @@ public class Main {
 
 	public void setNumJoueurEnCours(int num){
 		this.numJoueurEnCours = num;
+	}
+
+	public void setPseudo(String pseudo){
+		this.pseudo = pseudo;
+	}
+	
+	public void setIP(String adresseIP){
+		this.adresseIP = adresseIP;
+	}
+	
+	public void setPort(int port){
+		this.port = port;
 	}
 
 	public void captureCoineCellule(int ligne, int colonne, Joueur joueur, int coin){
