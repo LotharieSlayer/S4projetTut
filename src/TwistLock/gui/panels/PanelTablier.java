@@ -92,26 +92,36 @@ public class PanelTablier extends JPanel implements ActionListener{
 
     class PanelGrille extends JPanel{
         @Override
-        protected void paintComponent(Graphics g) {
-            int x =6;
-            int y =9;
-            int coin = 3;
-            int numJoueur = 1;
-            File fichier = new File("../res/img/rond-j"+numJoueur+".png");
-            super.paintComponent(g);
-            
-            try {
-                switch(coin){
-                    case 1 -> g.drawImage(ImageIO.read(fichier), x*70+(x-1)*10, y*this.getHeight()/11-5+(y-1)*4, null);
-                    case 2 -> g.drawImage(ImageIO.read(fichier), (x+1)*70+(x+1-1)*10, y*this.getHeight()/11-5+(y-1)*4, null);
-                    case 3 -> g.drawImage(ImageIO.read(fichier), (x+1)*70+(x+1-1)*10, (y+1)*this.getHeight()/11-5+(y-1+1)*4, null);
-                    case 4 -> g.drawImage(ImageIO.read(fichier), x*70+(x-1)*10, (y+1)*this.getHeight()/11-5+(y-1+1)*4, null);
+        public void paintComponent(Graphics g) {
+
+            for (int i = 0; i < rectangleButton.length; i++) {
+                for (int j = 0; j < rectangleButton[i].length; j++) {
+                    //int ligne = rectangleButton[i][j].getNbX();
+                    //int colonne = rectangleButton[i][j].getNbY();
+                    for(int k = 0; k < 4; k++)
+                    {
+                        if(instance.getCelluleAt(i, j).coinCapture(k+1))
+                        {
+                            int numJoueurCoin = instance.getCelluleAt(i, j).coinCaptureBy(k).getNumJoueur();
+
+                            File fichier = new File("../res/img/rond-j" + numJoueurCoin + ".png");
+                            super.paintComponent(g);
+                            try {
+                                switch(k+1){
+                                    case 1 -> g.drawImage(ImageIO.read(fichier), j*70+(j-1)*10, i*this.getHeight()/11-5+(i-1)*4, null);
+                                    case 2 -> g.drawImage(ImageIO.read(fichier), (j+1)*70+(j+1-1)*10, i*this.getHeight()/11-5+(i-1)*4, null);
+                                    case 3 -> g.drawImage(ImageIO.read(fichier), (j+1)*70+(j+1-1)*10, (i+1)*this.getHeight()/11-5+(i-1+1)*4, null);
+                                    case 4 -> g.drawImage(ImageIO.read(fichier), j*70+(j-1)*10, (i+1)*this.getHeight()/11-5+(i-1+1)*4, null);
+                                }
+                                    
+                            } catch (IOException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                        }
+                    }
                 }
-                    
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            } 
         }
     }
 }
